@@ -12,6 +12,8 @@ Route::controller(StudentController::class)->group(function(){
 Route::get("/students",'index')->name('index');
 Route::get("/students/course",'course')->name('course');
 
+
+
 });
 });
 
@@ -20,7 +22,8 @@ Route::get('/login','login')->name('login');
 Route::get('/register','register')->name('register');
 Route::get('/logout','logout')->name('logout');
 Route::post('/handlelogin','handlelogin')->name('handlelogin');
-Route::get('uri: /handleregister','handleregister')->name('handleregister');
+Route::get('/handleregister','handleregister')->name('handleregister');
+Route::get("/profile",'profile')->name('profile');
 
 
 });

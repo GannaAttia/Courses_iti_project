@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/',AdminController::class);
 
 Route::prefix("/user")->name("user.")->group(function(){
-Route::controller(StudentController::class)->group(function(){
-Route::get("/students",'index')->name('index');
-Route::get("/students/course",'course')->name('course');
+ Route::controller(StudentController::class)->group(function(){
+  Route::get("/students",'index')->name('index');
+  Route::get("/students/course",'course')->name('course');
+  Route::get("/students/profile",'profile')->middleware('auth')->where(['id'=>'[0-9]+'])->name('profile');
 
 
 

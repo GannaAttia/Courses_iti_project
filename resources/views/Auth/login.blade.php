@@ -25,26 +25,56 @@
                         <figure><img src="{{ asset('loginform/form_assets/images/signin-image.jpg') }}" alt="sing up image"></figure>
                         <a href="{{ route('register') }}" class="signup-image-link">Create an account</a>
                     </div>
-
+                    <div class="row pb-4">
+                            <div class="col-12">
+                                @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                <div class="allert alert-danger">Not Valid Email or Password</div>
+                                @endforeach
+                                @endif
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
-                        <form method="POST" class="register-form" id="login-form">
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                        @if (session('msg'))
+                            <div class="alert alert-danger">
+                                {{ session('msg') }}
                             </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                            </div>
-                        </form>
+                        @endif
+                        <style>
+                            .alert {
+                                background-color: #f8d7da;  /* light red */
+                                color: #721c24;            /* dark red text */
+                                border: 1px solid #f5c6cb;
+                                padding: 10px 15px;
+                                border-radius: 6px;
+                                margin-bottom: 15px;
+                                font-size: 14px;
+                            }
+                      </style>
+
+
+                <form method="POST" action="{{ route('handlelogin') }}">
+                    @csrf
+
+                    <div class="form-group">
+                <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
+                @error('email')
+                    <small class="text-danger d-block mt-1">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                @error('password')
+                    <small class="text-danger d-block mt-1">{{ $message }}</small>
+                @enderror
+            </div>
+
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+
+
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
@@ -63,5 +93,20 @@
             <!-- JS -->
     <script src="{{ asset('loginform/form_assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('loginform/form_assets/js/main.js') }}"></script>
+
+     <script>
+        $(".preloader").fadeOut();
+        // ==============================================================
+        // Login and Recover Password
+        // ==============================================================
+        $("#to-recover").on("click", function () {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+        $("#to-login").click(function () {
+            $("#recoverform").hide();
+            $("#loginform").fadeIn();
+        });
+    </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

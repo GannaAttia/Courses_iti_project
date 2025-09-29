@@ -19,10 +19,12 @@ Route::get("/students/course",'course')->name('course');
 
 Route::controller(AuthController::class)->group(function(){
 Route::get('/login','login')->name('login');
-Route::get('/register','register')->name('register');
-Route::get('/logout','logout')->name('logout');
 Route::post('/handlelogin','handlelogin')->name('handlelogin');
-Route::get('/handleregister','handleregister')->name('handleregister');
+
+Route::get('/register','register')->name('register');
+Route::post('/handleregister','handleregister')->name('handleregister');
+
+Route::get('/logout','logout')->name('logout');
 Route::get("/profile",'profile')->name('profile');
 
 

@@ -12,7 +12,10 @@ Route::prefix("/user")->name("user.")->group(function () {
         Route::get("/students", 'index')->name('index');
 
         Route::get("/students/course", 'course')->middleware('auth')->name('course');
-        Route::get("/students/profile", 'profile')->middleware('auth')->name('profile');
+        Route::get("/students/profile",'profile')->middleware('auth')->where(['id'=>'[0-9]+'])->name('profile');
+        Route::get('/students/profile/edit', 'editProfile')->middleware('auth')->name('profile.edit');
+        Route::put('/students/profile/update', 'updateProfile')->middleware('auth')->name('profile.update');
+
     });
 });
 

@@ -54,12 +54,11 @@
            <!-- Profile Picture -->
            
            
-              <img src="https://via.placeholder.com/150" class="rounded-circle mb-3 profile-pic" alt="User Photo">
-           
+              <img src="{{ $student->image_url }}" class="rounded-circle mb-3 profile-pic" alt="User Photo">
 
             <h4 class="mb-0">{{ $student->name }}</h4>
             <p class="text-muted">Student</p>
-            <a href="#" class="btn btn-primary btn-sm">Edit Profile</a>
+            <a href="{{ route('user.profile.edit') }}" class="btn btn-primary btn-sm">Edit Profile</a>
           </div>
         </div>
       </div>

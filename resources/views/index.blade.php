@@ -75,7 +75,7 @@
 
             @auth
                 <div class="d-flex align-items-center pe-4">
-                    <a href="{{ route('profile') }}" class="me-3">
+                    <a href="{{ route('user.profile') }}" class="me-3">
                         <img src="{{ asset('dashboard/assets/img/user.png') }}"
                             alt="Profile"
                             class="rounded-circle"
@@ -119,7 +119,7 @@
                             @endguest
 
                             @auth
-                                <a href="{{ route('profile') }}" class="btn btn-success py-md-3 px-md-5 animated slideInRight">
+                                <a href="{{ route('user.profile') }}" class="btn btn-success py-md-3 px-md-5 animated slideInRight">
                                     Go to Profile
                                 </a>
                             @endauth
@@ -151,7 +151,7 @@
                             @endguest
 
                             @auth
-                                <a href="{{ route('profile') }}" class="btn btn-success py-md-3 px-md-5 animated slideInRight">
+                                <a href="{{ route('user.profile') }}" class="btn btn-success py-md-3 px-md-5 animated slideInRight">
                                     Go to Profile
                                 </a>
                             @endauth

@@ -1027,7 +1027,10 @@
 #66 {main}
 "} 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 [2025-09-30 13:42:32] local.ERROR: Route [user.dashboard] not defined. {"userId":1,"exception":"[object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [user.dashboard] not defined. at C:\\Users\\yassa\\Downloads\\Courses_iti_project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:526)
 [stacktrace]
@@ -1945,6 +1948,9 @@
 #52 C:\\Users\\yassa\\Downloads\\Courses_iti_project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\yassa\\\\...')
 #53 {main}
 =======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 [2025-09-29 21:36:52] local.ERROR: SQLSTATE[HY000]: General error: 1364 Field 'course_id' doesn't have a default value (Connection: mysql, SQL: insert into `students` (`name`, `email`, `password`, `updated_at`, `created_at`) values (ahmed, ahmed@gmail.com, $2y$12$omsWbwMuUtCjkS3kw9VPZOylIxMhurCk83oCfPFNkudOIeHCjbNM6, 2025-09-29 21:36:52, 2025-09-29 21:36:52)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1364 Field 'course_id' doesn't have a default value (Connection: mysql, SQL: insert into `students` (`name`, `email`, `password`, `updated_at`, `created_at`) values (ahmed, ahmed@gmail.com, $2y$12$omsWbwMuUtCjkS3kw9VPZOylIxMhurCk83oCfPFNkudOIeHCjbNM6, 2025-09-29 21:36:52, 2025-09-29 21:36:52)) at C:\\Users\\ftoma\\OneDrive\\Desktop\\Courses_iti_project\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:824)
 [stacktrace]
@@ -2460,6 +2466,10 @@
 #58 C:\\Users\\ftoma\\OneDrive\\Desktop\\Courses_iti_project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\ftoma\\\\...')
 #59 {main}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 49230c66d0f91e7d9e3a597e77e6f789ecac3e9b
+>>>>>>> Stashed changes
 =======
 >>>>>>> 49230c66d0f91e7d9e3a597e77e6f789ecac3e9b
 >>>>>>> Stashed changes

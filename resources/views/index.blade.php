@@ -332,7 +332,7 @@
                                     @endguest
 
                                     @auth
-                                        <a href="{{ route('profile') }}" class="flex-shrink-0 btn btn-sm btn-success px-3"
+                                        <a href="{{ route('user.profile') }}" class="flex-shrink-0 btn btn-sm btn-success px-3"
                                         style="border-radius: 0 30px 30px 0;">Go to Profile</a>
                                     @endauth
                                 </div>
@@ -378,7 +378,7 @@
                                     @endguest
 
                                     @auth
-                                        <a href="{{ route('profile') }}" class="flex-shrink-0 btn btn-sm btn-success px-3"
+                                        <a href="{{  route('user.profile')}}" class="flex-shrink-0 btn btn-sm btn-success px-3"
                                         style="border-radius: 0 30px 30px 0;">Go to Profile</a>
                                     @endauth
                                 </div>
@@ -424,7 +424,7 @@
                                     @endguest
 
                                     @auth
-                                        <a href="{{ route('profile') }}" class="flex-shrink-0 btn btn-sm btn-success px-3"
+                                        <a href="{{ route('user.profile')}}" class="flex-shrink-0 btn btn-sm btn-success px-3"
                                         style="border-radius: 0 30px 30px 0;">Go to Profile</a>
                                     @endauth
                                 </div>

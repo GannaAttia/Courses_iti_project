@@ -48,7 +48,7 @@ class AuthController extends Controller
     }
             public function handleRegister(Request $request){
                 $data=$request->validate([
-        'name'=> 'required|alpha|max:255', 
+        'name'=> 'required|alpha|max:255|min:3', 
         'email'=> 'required|email|unique:students,email',
         'password'=> 'required|min:6',
         'password_confirmation'=> 'required|same:password'

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Route::get('/',AdminController::class);
 
 Route::prefix("/user")->name("user.")->group(function () {
@@ -18,6 +19,8 @@ Route::prefix("/user")->name("user.")->group(function () {
         Route::put('/students/profile/update', 'updateProfile')->middleware('auth')->name('profile.update');
 
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 
 
@@ -46,6 +49,9 @@ Route::prefix("/user")->name("user.")->group(function () {
         Route::get('/students/profile/edit', 'editProfile')->middleware('auth')->name('profile.edit');
         Route::put('/students/profile/update', 'updateProfile')->middleware('auth')->name('profile.update');
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     });
 });

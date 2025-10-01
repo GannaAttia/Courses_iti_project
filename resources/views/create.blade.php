@@ -14,7 +14,7 @@
     content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
   />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Admin Dashboard</title>
+  <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
   <!-- Favicon icon -->
   <link
     rel="icon"
@@ -24,11 +24,6 @@
   />
   <!-- Custom CSS -->
   <link href="{{ asset('admindashboard/assets/css/style.min.css') }}" rel="stylesheet" />
-    <link
-      href="{{ asset('admindashboard/assets/css/dataTables.bootstrap4.css') }}"
-      rel="stylesheet"
-    />
-    
   </head>
 
   <body>
@@ -54,7 +49,7 @@
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
-                <img src="{{ asset('admindashboard/assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" width="25"/>
+                <img src="{{ asset('admindashboard/assets/images/logo-icon.png') }}" class="light-logo" width="25"/>
               </b>
               <!--End Logo icon -->
               <!-- Logo text -->
@@ -158,13 +153,13 @@
                   href="javascript:void(0)"
                   aria-expanded="false"
                   ><i class="mdi mdi-receipt"></i
-                  ><span class="hide-menu">Courses</span></a
+                  ><span class="hide-menu">Courses </span></a
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
                     <a href="{{ route('user.dashboard') }}" class="sidebar-link"
                       ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu"> All Courses</span></a
+                      ><span class="hide-menu"> All Courses </span></a
                     >
                   </li>
                   <li class="sidebar-item">
@@ -207,59 +202,71 @@
         <div class="container-fluid">
           <!-- Start Page Content -->
           <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
               <div class="card">
+               
+              @if ($errors->any())
+
+                <div class="alert alert-danger">
+                  @foreach ($errors->all() as $error)
+                      <li>{{$error}}</li>
+                  @endforeach
+                </div>
+
+                @endif
+
+
+
                 @if (Session::has('msg'))
                  <div class="alert alert-success">{{Session::get('msg')}}</div>
                 @endif
+        <div class="card-body">
+            <form class="form-horizontal" action="{{ route('user.store') }}" enctype="multipart/form-data" method="post">
+              @csrf
                 <div class="card-body">
-                  <h5 class="card-title">Basic Datatable</h5>
-                  <div class="table-responsive">
-                    <table
-                      id="zero_config"
-                      class="table table-striped table-bordered"
-                    >
-                      <thead>
-                        <tr>
-                          <th>Id</th>
-                          <th>Name</th>
-                          <th>Category</th>
-                          <th>Instructor_id</th>
-                          <th>Actions</th>
-                          
-                        </tr>
-                      </thead>
-                      <tbody>
+               
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 text-end control-label col-form-label">name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" placeholder="First Name Here"
+                                name="name" />
+                        </div>
+                    </div>
+                 
+                    <div class="form-group row">
+                        <label for="category" class="col-sm-3 text-end control-label col-form-label">category</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="email" placeholder="category Here"
+                                name="category" />
+                        </div>
+                    </div>
+                    
+                   
+               
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-end control-label col-form-label">instructors</label>
+                        <div class="col-sm-9"> 
+                            <select class="form-control" name="instructor_id">
+                               @foreach($instructors as $instructor )
+                                <option value="{{$instructor->id}}">{{$instructor->name}}</option>
+                               @endforeach
 
-                      @foreach ($courses as $course)
-                        <tr>
-                          
-                          <td>{{ $course->id }}</td>
-                          <td>{{ $course->name }}</td>
-                         <td>{{ $course->category }}</td>
-                           <td>{{ $course->instructor_id }}</td>
-                             <td class="d-flex">
-                            <a class="btn btn-outline-primary" href="{{route('user.show',$course->id)}}"> show</a>
-                            <a class="btn btn-outline-success" href="{{route('user.edit',$course->id)}}"> edit</a>
-                            <form action="{{route('user.destroy',$course->id)}}" method="POST"  onsubmit="return confirm('Are You Sure You Want To Delete?');">
-                               @csrf
-                               @method("delete")
-                               <input type="submit" value="delete" class="btn btn-danger">
-                            </form>
-                          </td>
-
-
-                          
-                        </tr>
-
-                        @endforeach
-                      </tbody>
-                    </table>
-                  </div>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
             </div>
           </div>
-        </div>
           <!-- End Page Content -->
 
         </div>
@@ -291,14 +298,5 @@
 <script src="{{ asset('admindashboard/assets/js/sidebarmenu.js') }}"></script>
 <!--Custom JavaScript -->
 <script src="{{ asset('admindashboard/assets/js/custom.min.js') }}"></script>
-    
-    <!-- this page js -->
-    <script src="{{ asset('admindashboard/assets/js/datatables.min.js') }}"></script>
-    <script>
-      /****************************************
-       *       Basic Table                   *
-       ****************************************/
-      $("#zero_config").DataTable();
-    </script>
   </body>
 </html>

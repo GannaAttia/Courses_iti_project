@@ -209,9 +209,6 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                @if (Session::has('msg'))
-                 <div class="alert alert-success">{{Session::get('msg')}}</div>
-                @endif
                 <div class="card-body">
                   <h5 class="card-title">Basic Datatable</h5>
                   <div class="table-responsive">
@@ -225,34 +222,23 @@
                           <th>Name</th>
                           <th>Category</th>
                           <th>Instructor_id</th>
-                          <th>Actions</th>
+                         
                           
                         </tr>
                       </thead>
                       <tbody>
 
-                      @foreach ($courses as $course)
+                     
                         <tr>
                           
                           <td>{{ $course->id }}</td>
                           <td>{{ $course->name }}</td>
                          <td>{{ $course->category }}</td>
                            <td>{{ $course->instructor_id }}</td>
-                             <td class="d-flex">
-                            <a class="btn btn-outline-primary" href="{{route('user.show',$course->id)}}"> show</a>
-                            <a class="btn btn-outline-success" href="{{route('user.edit',$course->id)}}"> edit</a>
-                            <form action="{{route('user.destroy',$course->id)}}" method="POST"  onsubmit="return confirm('Are You Sure You Want To Delete?');">
-                               @csrf
-                               @method("delete")
-                               <input type="submit" value="delete" class="btn btn-danger">
-                            </form>
-                          </td>
-
-
-                          
+                             
                         </tr>
 
-                        @endforeach
+                      
                       </tbody>
                     </table>
                   </div>

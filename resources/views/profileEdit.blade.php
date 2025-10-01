@@ -45,19 +45,46 @@
     </div>
   </nav>
 
- <form action="{{ route('user.profile.update') }}"  method="post"  enctype="multipart/form-data">
-     @csrf
+       @if ($errors->any())
+
+                <div class="alert alert-danger">
+                  @foreach ($errors->all() as $error)
+                      <li>{{$error}}</li>
+                  @endforeach
+                </div>
+
+                @endif
+
+ <form novalidate action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data" class="container mt-5 bg-white p-4 rounded shadow">
+    @csrf
     @method('PUT')  
 
-   
-  <div class="mb-3">
-    <label>Profile Image</label><br>
-    <img src="{{ $student->image_url }}" class="rounded-circle mb-2" width="100">
-    <input type="file" name="image" class="form-control">
-</div>
+    <h3 class="mb-4 text-center text-primary">Edit Profile</h3>
 
-      <button type="submit" class="btn btn-primary">Save Changes</button>
- </form>
+    <div class="text-center mb-3">
+        <img src="{{ $student->image_url }}" class="rounded-circle profile-pic mb-2" alt="Profile Image">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" value="{{ old('name', $student->name) }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" name="phone" class="form-control" value="{{ old('phone', $student->phone) }}">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Profile Image</label>
+        <input type="file" name="image" class="form-control">
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+    </div>
+</form>
+
 
   <!-- Footer -->
   <footer class="text-white text-center py-3">

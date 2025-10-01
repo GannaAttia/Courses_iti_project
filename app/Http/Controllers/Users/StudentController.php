@@ -32,8 +32,13 @@ class StudentController extends Controller
     $student = Auth::user();
 
     $request->validate([
+        'name'  => 'required|string|max:255',
+        'phone' => 'nullable|string|max:20',
         'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
     ]);
+
+     $student->name = $request->name;
+    $student->phone = $request->phone;
 
     if ($request->hasFile('image')) {
         

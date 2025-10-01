@@ -9,8 +9,8 @@ class AdminController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+public function dashboard()
     {
-        return view('home');
+        return view('dashboard'); // resources/views/dashboard.blade.php
     }
 }

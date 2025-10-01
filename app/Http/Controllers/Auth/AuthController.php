@@ -33,14 +33,17 @@ class AuthController extends Controller
 
        if(! $is_login){
         return redirect()->route('login')->with('msg','not validate email or password');
-       }else{
+       }else if(Auth::user()->is_admin==0){
          return redirect()->route('user.index');
+       }else{
+         return redirect()->route('user.dashboard');
        }
 
-       if(Auth::user()->is_admin=='false'){
+       if(Auth::user()->is_admin==0){
         return redirect()->route('user.index');
        }else{
         //dashboard page
+        return redirect()->route('user.dashboard');
        }
     }
             public function handleRegister(Request $request){

@@ -13,12 +13,13 @@ class Student extends Model
         'email',
         'image',
         'course_id',
-      
+
     ];
 
-     public function course()
-    {
-        return $this->belongsTo(Course::class, 'course_id'); 
-        
-    }
+        public function course()
+        {
+            return $this->belongsTo(Course::class, 'course_id');
+
+        }
+
 }

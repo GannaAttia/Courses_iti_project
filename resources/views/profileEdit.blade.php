@@ -40,7 +40,7 @@
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">eLEARNING</a>
       <div>
-        <a href="{{ route('user.index') }}" class="btn btn-outline-light btn-sm">Home</a>
+        <a href="{{ route('user.courses.course') }}" class="btn btn-outline-light btn-sm">Home</a>
       </div>
     </div>
   </nav>
@@ -57,7 +57,7 @@
 
  <form novalidate action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data" class="container mt-5 bg-white p-4 rounded shadow">
     @csrf
-    @method('PUT')  
+    @method('PUT')
 
     <h3 class="mb-4 text-center text-primary">Edit Profile</h3>
 

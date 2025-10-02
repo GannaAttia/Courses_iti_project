@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->string('email')->unique();
             $table->string('image')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->foreignId('course_id')->nullable()->constrained('courses')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -28,7 +28,7 @@
       href="{{ asset('admindashboard/assets/css/dataTables.bootstrap4.css') }}"
       rel="stylesheet"
     />
-    
+
   </head>
 
   <body>
@@ -223,20 +223,26 @@
                         <tr>
                           <th>Id</th>
                           <th>Name</th>
-                          <th>Category</th>
+                          <th>Price</th>
+                          <th>Description</th>
+                          <th>Course Image</th>
                           <th>Instructor_id</th>
                           <th>Actions</th>
-                          
+
                         </tr>
                       </thead>
                       <tbody>
 
                       @foreach ($courses as $course)
                         <tr>
-                          
+
                           <td>{{ $course->id }}</td>
                           <td>{{ $course->name }}</td>
-                         <td>{{ $course->category }}</td>
+                          <td>{{ $course->price }}</td>
+                          <td>{{ $course->description }}</td>
+                          <td>
+                                <img src="{{ asset($course->image) }}" alt="Course Image" width="80">
+                          </td>
                            <td>{{ $course->instructor_id }}</td>
                              <td class="d-flex">
                             <a class="btn btn-outline-primary" href="{{route('user.show',$course->id)}}"> show</a>
@@ -249,7 +255,7 @@
                           </td>
 
 
-                          
+
                         </tr>
 
                         @endforeach
@@ -271,7 +277,7 @@
           <a href="https://www.wrappixel.com">WrapPixel</a>.
         </footer>
         <!-- End footer -->
-        
+
       </div>
       <!-- End Page wrapper -->
     </div>
@@ -291,7 +297,7 @@
 <script src="{{ asset('admindashboard/assets/js/sidebarmenu.js') }}"></script>
 <!--Custom JavaScript -->
 <script src="{{ asset('admindashboard/assets/js/custom.min.js') }}"></script>
-    
+
     <!-- this page js -->
     <script src="{{ asset('admindashboard/assets/js/datatables.min.js') }}"></script>
     <script>

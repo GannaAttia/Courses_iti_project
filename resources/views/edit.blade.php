@@ -204,7 +204,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-               
+
               @if ($errors->any())
 
                 <div class="alert alert-danger">
@@ -226,7 +226,7 @@
              @method('PUT')
 
                 <div class="card-body">
-               
+
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 text-end control-label col-form-label">name</label>
                         <div class="col-sm-9">
@@ -234,20 +234,36 @@
                                 name="name" />
                         </div>
                     </div>
-                 
+
+<!-- Price -->
                     <div class="form-group row">
-                        <label for="category" class="col-sm-3 text-end control-label col-form-label">category</label>
+                        <label for="price" class="col-sm-3 text-end control-label col-form-label">Price</label>
                         <div class="col-sm-9">
-                            <input value="{{$course->category}}" type="text" class="form-control" id="category" placeholder="category Here"
-                                name="category" />
+                        <input type="number" class="form-control" id="price" placeholder="Course Price" name="price" step="0.01" />
                         </div>
                     </div>
-                    
-                   
-               
+
+                    <div class="form-group row">
+                        <label for="description" class="col-sm-3 text-end control-label col-form-label">Description</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="description" placeholder="description" name="description" step="0.01" />
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="form-group row">
+                        <label for="image" class="col-sm-3 text-end control-label col-form-label">Course Image</label>
+                        <div class="col-sm-9">
+                        <input type="file" class="form-control" id="image" name="image" />
+                        </div>
+                    </div>
+
+
+
+
                     <div class="form-group row">
                         <label for="fname" class="col-sm-3 text-end control-label col-form-label">instructors</label>
-                        <div class="col-sm-9"> 
+                        <div class="col-sm-9">
                             <select class="form-control" name="instructor_id">
                                @foreach($instructors as $instructor )
                                 <option value="{{$instructor->id}}"
@@ -285,7 +301,7 @@
           <a href="https://www.wrappixel.com">WrapPixel</a>.
         </footer>
         <!-- End footer -->
-        
+
       </div>
       <!-- End Page wrapper -->
     </div>

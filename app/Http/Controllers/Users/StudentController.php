@@ -18,9 +18,8 @@ class StudentController extends Controller
     
      public function profile()
     {
-        
         $student = Auth::user();   
-        return view('students.profile', compact('student'));
+        return view('profile', compact('student'));
     }
 
 

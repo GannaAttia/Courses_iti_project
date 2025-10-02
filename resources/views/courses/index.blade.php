@@ -67,35 +67,30 @@
                 </div>
                 <a href="" class="nav-item nav-link">Contact</a>
             </div>
+        @guest
+                    <div class="d-flex align-items-center pe-4">
+                        <form action="{{ route('login') }}" method="GET" class="me-2">
+                            <button type="submit" class="btn btn-success py-2 px-4">Login</button>
+                        </form>
 
-            @guest
-                <form action="{{ route('course.join', $course->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="flex-shrink-0 btn btn-sm btn-primary px-3"
-                            style="border-radius: 0 30px 30px 0;">
-                        Join Now
-                    </button>
+                        <form action="{{ route('register') }}" method="GET">
+                            <button type="submit" class="btn btn-primary py-2 px-4">Sign Up</button>
+                        </form>
+                    </div>
+        @endguest
+        @auth
+            <div class="d-flex align-items-center pe-4">
+                <form action="{{ route('user.profile') }}" method="GET">
+                    <button type="submit" class="btn btn-success py-2 px-4">Profile</button>
                 </form>
 
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger py-2 px-4">Logout</button>
+                </form>
+            </div>
+        @endauth
 
-            @endguest
-
-            @auth
-                <div class="d-flex align-items-center pe-4">
-
-                    <form action="{{ route('user.profile') }}" method="GET">
-                        @csrf
-                        <button type="submit" class="btn btn-success py-2 px-4">Profile</button>
-                    </form>
-
-
-
-                    <form action="{{ route('logout') }}" method="GET">
-                        @csrf
-                        <button type="submit" class="btn btn-danger py-2 px-4">Logout</button>
-                    </form>
-                </div>
-            @endauth
         </div>
     </nav>
     <!-- Navbar End -->
@@ -261,26 +256,7 @@
                     <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
 
 
-                        @guest
-                            <form action="{{ route('user.course.join', $course->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="flex-shrink-0 btn btn-sm btn-primary px-3"
-                                        style="border-radius: 0 30px 30px 0;">
-                                    Join Now
-                                </button>
-                            </form>
-                        @endguest
 
-                        @auth
-                            @if(auth()->user()->course_id == $course->id)
-                                <button class="btn btn-success" disabled>Purchased</button>
-                            @else
-                                <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Buy Now</button>
-                                </form>
-                            @endif
-                        @endauth
 
                     </div>
                 </div>

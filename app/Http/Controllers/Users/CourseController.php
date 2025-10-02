@@ -15,6 +15,7 @@ class CourseController extends Controller
         return view('courses.index', compact('courses'));
     }
 
+
     public function index_course()
     {
         $courses = \App\Models\Course::latest()->get();

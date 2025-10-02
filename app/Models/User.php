@@ -51,4 +51,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function getImageUrlAttribute()
+{
+    if ($this->image) {
+        return asset('uploads/students/' . $this->image);
+    }
+    return asset('uploads/students/default.png'); 
+}
+
+
+
 }

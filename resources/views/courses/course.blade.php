@@ -100,7 +100,7 @@
 
 
 
-                    <form action="{{ route('logout') }}" method="GET">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-danger py-2 px-4">Logout</button>
                     </form>

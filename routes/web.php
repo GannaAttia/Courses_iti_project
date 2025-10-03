@@ -8,7 +8,7 @@
 
 
 
-    Route::post('/courses/{id}/enroll', [CourseController::class, 'enroll'])->name('courses.enroll');
+    Route::post('/courses/{id}/enroll', [CourseController::class, 'enroll']) ->middleware('auth')->name('courses.enroll');
 
     Route::prefix("/user")->name("user.")->group(function () {
 
@@ -23,7 +23,7 @@
                 ->name('courses.index');
 
 
-            Route::controller(AdminController::class)->group(function(){
+            Route::middleware('is_admin','auth')->controller(AdminController::class)->group(function(){
             Route::get('/dashboard','dashboard')->name('dashboard');
             Route::get("/courses/create",'create')->name('create');
             Route::post("/courses",'store')->name('store');
@@ -46,12 +46,16 @@
     });
 
     Route::controller(AuthController::class)->group(function () {
+    Route::middleware('guest')->group(function () {
         Route::get('/login', 'login')->name('login');
         Route::post('/handlelogin', 'handlelogin')->name('handlelogin');
 
         Route::get('/register', 'register')->name('register');
         Route::post('/handleregister', 'handleregister')->name('handleregister');
-
-        Route::post('/logout', 'logout')->name('logout');
-        Route::get("/profile", 'profile')->middleware('auth')->name('profile');
     });
+
+    Route::post('/logout', 'logout')->name('logout')->withoutMiddleware('guest');
+
+    Route::get("/profile", 'profile')->middleware('auth')->name('profile');
+});
+

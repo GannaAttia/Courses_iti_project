@@ -12,7 +12,12 @@ use Symfony\Component\CssSelector\Node\FunctionNode;
 class AuthController extends Controller
 {
     public function login(){
-        return view('auth.login');
+        if(Auth::check()){
+            return redirect()->back();
+        }else{
+            return view('auth.login');
+        }
+        
     }
 
         public function register(){

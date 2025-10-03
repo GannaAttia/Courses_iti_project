@@ -121,12 +121,16 @@
                   aria-labelledby="navbarDropdown"
                 >
                   <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-account me-1 ms-1"></i> Admin</a
+                    ><i class="mdi mdi-account me-1 ms-1"></i> {{ Auth::user()->name??'' }}</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
-                  >
+                  <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                  @csrf
+                 <button type="submit" class="dropdown-item">
+                 <i class="mdi mdi-logout me-1 ms-1"></i> Logout
+                </button>
+                  </form>
+
                 </ul>
               </li>
               <!-- ============================================================== -->

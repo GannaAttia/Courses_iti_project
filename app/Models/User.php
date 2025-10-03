@@ -30,10 +30,12 @@ class User extends Authenticatable
         ];
     }
 
-    public function course()
-    {
-        return $this->belongsTo(Course::class, 'course_id');
-    }
+public function courses()
+{
+    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
+}
+
+
 
     public function getImageUrlAttribute()
     {

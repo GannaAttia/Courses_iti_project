@@ -77,9 +77,25 @@
 
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">My Course</h5>
-                        <hr>
-                    <p><strong>Course:</strong> {{ $student->course->name ?? 'No Course Assigned' }}</p>
+                      
+                      
+                    <h5 class="card-title">My Courses</h5>
+<hr>
+@if($student->courses->count() > 0)
+    <ul class="list-group">
+        @foreach($student->courses as $course)
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ $course->name }}
+                <span class="badge bg-primary rounded-pill">
+                    {{ $course->students_count ?? $course->students->count() }} enrolled
+                </span>
+            </li>
+        @endforeach
+    </ul>
+@else
+    <p class="text-muted">No courses enrolled yet.</p>
+@endif
+
 
                     </div>
                 </div>

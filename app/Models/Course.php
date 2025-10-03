@@ -18,9 +18,17 @@ class Course extends Model
 
     ];
 
-    public function students()
-    {
-        return $this->hasMany(Student::class, 'course_id');
-    }
+   public function students()
+{
+    return $this->belongsToMany(User::class, 'course_student', 'course_id', 'student_id')
+                ->withTimestamps();
+}
+
+    
+public function instructor()
+{
+    return $this->belongsTo(Instructor::class, 'instructor_id');
+}
+
 
 }

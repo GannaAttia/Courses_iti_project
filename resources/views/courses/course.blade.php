@@ -215,16 +215,16 @@
                             </form>
                         @endguest
 
-                        @auth
-                            @if(auth()->user()->course_id == $course->id)
-                                <button class="btn btn-success" disabled>Purchased</button>
-                            @else
-                                <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Buy Now</button>
-                                </form>
-                            @endif
-                        @endauth
+                    @auth
+    @if(auth()->user()->courses && auth()->user()->courses->contains($course->id))
+        <button class="btn btn-success" disabled>Purchased</button>
+    @else
+        <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary">Buy Now</button>
+        </form>
+    @endif
+@endauth
 
 
                     </div>
@@ -235,16 +235,19 @@
                     <p>{{ $course->description ?? '' }}</p>
                 </div>
                 <div class="d-flex border-top">
-                    <small class="flex-fill text-center border-end py-2">
-                        <i class="fa fa-user-tie text-primary me-2"></i>{{ $course->instructor ?? 'Admin' }}
-                    </small>
-                    <small class="flex-fill text-center border-end py-2">
-                        <i class="fa fa-clock text-primary me-2"></i>{{ $course->duration ?? '1 Hrs' }}
-                    </small>
-                    <small class="flex-fill text-center py-2">
-                        <i class="fa fa-user text-primary me-2"></i>{{ $course->students_count ?? 0 }} Students
-                    </small>
-                </div>
+    <small class="flex-fill text-center border-end py-2">
+        <i class="fa fa-user-tie text-primary me-2"></i>
+        {{ $course->instructor->name ?? 'Admin' }}
+    </small>
+    <small class="flex-fill text-center border-end py-2">
+        <i class="fa fa-clock text-primary me-2"></i>
+        {{ $course->duration ?? '1 Hrs' }}
+    </small>
+    <small class="flex-fill text-center py-2">
+        <i class="fa fa-user text-primary me-2"></i>
+        {{ $course->students_count ?? 0 }} Students
+    </small>
+</div>
             </div>
         </div>
     @endforeach

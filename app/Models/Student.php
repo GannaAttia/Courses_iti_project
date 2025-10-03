@@ -12,14 +12,16 @@ class Student extends Model
         'password',
         'email',
         'image',
-        'course_id',
+        
 
     ];
 
-        public function course()
-        {
-            return $this->belongsTo(Course::class, 'course_id');
+// in App\Models\User OR Student
+public function courses()
+{
+    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id')
+                ->withTimestamps();
+}
 
-        }
 
 }

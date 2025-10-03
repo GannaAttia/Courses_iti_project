@@ -52,6 +52,6 @@
         Route::get('/register', 'register')->name('register');
         Route::post('/handleregister', 'handleregister')->name('handleregister');
 
-        Route::get('/logout', 'logout')->name('logout');
+        Route::post('/logout', 'logout')->name('logout');
         Route::get("/profile", 'profile')->middleware('auth')->name('profile');
     });

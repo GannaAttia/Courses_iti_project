@@ -254,7 +254,16 @@
                          src="{{ $course->image ? asset($course->image) : asset('dashboard/assets/img/course-1.jpg') }}"
                          alt="">
                     <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-
+                        @auth
+                            @if(auth()->user()->course_id == $course->id)
+                                <button class="btn btn-success" disabled>Purchased</button>
+                            @else
+                                <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Buy Now</button>
+                                </form>
+                            @endif
+                        @endauth
 
 
 
